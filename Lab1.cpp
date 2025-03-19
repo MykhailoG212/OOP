@@ -1,6 +1,5 @@
 #include "Lab1.h"
 #include <iostream>
-#include <cmath>
 #include <string>
 
 void Add(cina& cina1, int grn, int kop)

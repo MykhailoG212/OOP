@@ -12,6 +12,7 @@ struct Triangle
 
     double area() const;
     bool contains(const Point &P) const;
+    bool contains1(const Point &P) const;
 };
 double heronArea(const Triangle &t);
 int vir(const Triangle &t);

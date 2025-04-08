@@ -16,23 +16,43 @@ double Triangle::area() const
 {
     return heronArea(*this);
 }
-bool Triangle::contains(const Point &P) const
+bool Triangle::contains(const Point &P) const {
+    double d1 = (B.x - A.x) * (P.y - A.y) - (B.y - A.y) * (P.x - A.x);
+    double d2 = (C.x - B.x) * (P.y - B.y) - (C.y - B.y) * (P.x - B.x);
+    double d3 = (A.x - C.x) * (P.y - C.y) - (A.y - C.y) * (P.x - C.x);
+
+    bool neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+    bool pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+
+    if (neg && pos)
+        return 0;
+    if (d1 == 0 || d2 == 0 || d3 == 0)
+    {
+        std::cout << "Точка лежить на межі трикутника\n";
+        return 1;
+    }
+    return 1;
+}
+
+bool Triangle::contains1(const Point &P) const
 {
     double d1 = (B.x - A.x) * (P.y - A.y) - (B.y - A.y) * (P.x - A.x);
     double d2 = (C.x - B.x) * (P.y - B.y) - (C.y - B.y) * (P.x - B.x);
     double d3 = (A.x - C.x) * (P.y - C.y) - (A.y - C.y) * (P.x - C.x);
 
-    bool hasNeg = (d1 < 0) || (d2 < 0) || (d3 < 0);
-    bool hasPos = (d1 > 0) || (d2 > 0) || (d3 > 0);
-
-    if (hasNeg && hasPos)
-        return false;
+    bool neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+    bool pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
     if (d1 == 0 || d2 == 0 || d3 == 0)
     {
         std::cout << "Точка лежить на межі трикутника\n";
-        return true;
     }
-    return true;
+    Triangle T1 = {A, B, P};
+    Triangle T2 = {B, C, P};
+    Triangle T3 = {C, A, P};
+
+    double S_main = area();
+    double S_sum = T1.area() + T2.area() + T3.area();
+    return fabs(S_main - S_sum) < 1e-9;
 }
 int vir(const Triangle &t)
 {

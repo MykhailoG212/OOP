@@ -7,20 +7,20 @@ int main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
-    Dyhotomia_class *dichotomy = new Dyhotomia_class();
-    dichotomy->setVolumes(0.5, 1);
-    dichotomy->setTolerance(1e-6);
+    Dyhotomia_class *dyh = new Dyhotomia_class();
+    dyh->setVolumes(0.5, 1);
+    dyh->setTolerance(1e-6);
 
-    if (dichotomy->hasSolution())
+    if (dyh->hasSolution())
     {
-        double solution = dichotomy->solve();
+        double solution = dyh->solve();
         std::cout << "Корінь (дихотомія): " << solution << std::endl;
     }
     else
     {
         std::cout << "Корінь не знайдено метдом дихотомії на цьому інтервалі" << std::endl;
     }
-    delete dichotomy;
+    delete dyh;
 
     Newton_class *newton = new Newton_class();
     newton->setInterval(0.5, 1);

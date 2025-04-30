@@ -8,14 +8,14 @@ int main() {
     Food* apple = new Food();
     apple->setName("Яблуко");
     apple->setPrice(5);
-    apple->setExpirationDate("2025-12-31");
+    apple->setExpirationDate("20/07/2025");
     apple->setCalories(95);
     apple->display();
 
     Food* banana = new Food();
     banana->setName("Банан");
     banana->setPrice(7);
-    banana->setExpirationDate("2025-12-25");
+    banana->setExpirationDate("24/08/2025");
     banana->setCalories(105);
     banana->display();
 
@@ -24,7 +24,7 @@ int main() {
     Dairy* milk = new Dairy();
     milk->setName("Молоко");
     milk->setPrice(120);
-    milk->setExpirationDate("2025-07-01");
+    milk->setExpirationDate("22/11/2025");
     milk->setCalories(150);
     milk->setType("Молоко");
     milk->setFat(3.2);
@@ -33,10 +33,10 @@ int main() {
     Dairy* cheese = new Dairy();
     cheese->setName("Сир");
     cheese->setPrice(210);
-    cheese->setExpirationDate("2025-07-01");
+    cheese->setExpirationDate("21/12/2025");
     cheese->setCalories(170);
     cheese->setType("Сир");
-    cheese->setFat(3.2);
+    cheese->setFat(7.2);
     cheese->display();
 
     std::cout << "-----\n";
@@ -59,6 +59,8 @@ int main() {
     phone->setManufacturer("Apple");
     phone->display();
 
+    std::cout << "-----------------------------\n";
+
     delete apple;
     delete banana;
     delete milk;
@@ -68,3 +70,4 @@ int main() {
 
     return 0;
 }
+

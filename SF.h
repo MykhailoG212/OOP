@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stdexcept>
 using namespace std;
 
 class LoggerSingleton {
@@ -12,33 +13,33 @@ public:
     void Log(const string& message);
 };
 
-class SkiRent {
+class CarWash {
 public:
-    int RentBoots(int size);
-    int RentSki();
-    int RentPole();
+    int WashExterior();
+    int CleanInterior();
+    int WaxCar();
 };
 
-class TicketSystem {
+class PaymentSystem {
 public:
-    int BuyOneDayTicket();
+    int PayForService();
 };
 
-class HotelBooking {
+class GarageBooking {
 public:
-    int BookRoom(int stars);
+    int BookGarage(int size);
 };
 
-class SkiResort {
+class CarService {
 private:
-    SkiRent rent;
-    TicketSystem ticket;
-    HotelBooking hotel;
+    CarWash wash;
+    PaymentSystem payment;
+    GarageBooking garage;
 
 public:
-    int HaveGoodRest(int roomRating);
+    int GetFullService(int garageSize);
 
-    SkiRent& GetRent() { return rent; }
-    TicketSystem& GetTicket() { return ticket; }
-    HotelBooking& GetHotel() { return hotel; }
+    CarWash& GetWash() { return wash; }
+    PaymentSystem& GetPayment() { return payment; }
+    GarageBooking& GetGarage() { return garage; }
 };

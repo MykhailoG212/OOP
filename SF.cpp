@@ -12,34 +12,34 @@ LoggerSingleton* LoggerSingleton::GetInstance() {
 }
 
 void LoggerSingleton::Log(const string& message) {
-    cout << "[LOG]: " << message << endl;
+    cout << "LOG: " << message << endl;
 }
 
-int SkiRent::RentBoots(int size) {
+int CarWash::WashExterior() {
     return 20;
 }
 
-int SkiRent::RentSki() {
+int CarWash::CleanInterior() {
     return 40;
 }
 
-int SkiRent::RentPole() {
+int CarWash::WaxCar() {
     return 5;
 }
 
-int TicketSystem::BuyOneDayTicket() {
+int PaymentSystem::PayForService() {
     return 120;
 }
 
-int HotelBooking::BookRoom(int stars) {
-    if (stars == 3) return 250;
-    if (stars == 4) return 500;
-    if (stars == 5) return 900;
-    throw invalid_argument("Invalid room rating");
+int GarageBooking::BookGarage(int size) {
+    if (size == 1) return 470;
+    if (size == 2) return 550;
+    if (size == 3) return 999;
+    throw invalid_argument("Invalid garage size");
 }
 
-int SkiResort::HaveGoodRest(int roomRating) {
-    int total = rent.RentSki() + rent.RentBoots(42) + rent.RentPole() + ticket.BuyOneDayTicket() + hotel.BookRoom(roomRating);
+int CarService::GetFullService(int garageSize) {
+    int total = wash.WashExterior() + wash.CleanInterior() + wash.WaxCar() + payment.PayForService() + garage.BookGarage(garageSize);
     LoggerSingleton::GetInstance()->Log("Total cost calculated");
     return total;
 }
